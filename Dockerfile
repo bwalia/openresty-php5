@@ -231,6 +231,10 @@ ENV PATH=$PATH:/bin/:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 COPY index.php /usr/local/openresty/nginx/html/index.php
 
+RUN mkdir -p /opt/nginx/conf/nginx-tenants.d/ \
+	&& chmod -R +x /opt/nginx/conf/nginx-tenants.d/ \
+	&& chown -R root /opt/nginx/conf/nginx-tenants.d/
+
 #CMD ["/usr/local/sbin/php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf"]
 #CMD [ "php-fpm" ]
 
@@ -246,7 +250,7 @@ COPY ./supervisord.conf /etc/
 
 ENTRYPOINT /usr/bin/supervisord -c /etc/supervisord.conf
 
-EXPOSE 8080
+EXPOSE 80
 
 # Use SIGQUIT instead of default SIGTERM to cleanly drain requests
 # See https://github.com/openresty/docker-openresty/blob/master/README.md#tips--pitfalls
