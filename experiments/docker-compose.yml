@@ -6,7 +6,7 @@ services:
     ports:
       - "8084:80"
     volumes:
-      - ./code:/code
+      - ./marshallharber:/code
       - ./edgeone.conf:/usr/local/openresty/nginx/conf/edgeone.conf
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf      
     links:
@@ -14,4 +14,4 @@ services:
   php:
     image: php:5-fpm
     volumes:
-      - ./code:/code
+      - ./marshallharber:/code

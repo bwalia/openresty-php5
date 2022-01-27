@@ -1,0 +1,64 @@
+<?php
+define("SITE_ID","3320");
+define("SITE_GUID","986EE753-5087-4FB2-BDB0-64DE15A77FFF");
+define("SERVER_NUMBER","22");
+define("SEOFRIENDLYURLSBOOL",true);
+define("HOST",$_SERVER['SERVER_NAME']);
+define("SITE_NAME",'Marshall Harber');
+date_default_timezone_set("Europe/London");
+  
+switch ($_SERVER['SERVER_NAME']) {
+case "local.marshallharber.com":
+  //date_default_timezone_set("Europe/London");
+  $server= 'DEV';
+  $dbUserStr='root';
+  $dbPasswordStr='password';
+  $dbNameStr='jobshout_live_marshallharber';
+  $dbHostStr='127.0.0.1';
+  break;
+case "staging.marshallharber.com":
+  $server= 'STAGING';
+  $dbUserStr='marshalluser';
+  $dbPasswordStr='!ChBi2K1ngS';
+  $dbNameStr='jobshout_live_marshallharber';
+  $dbHostStr='mysql.jobshout.co.uk';
+  break;
+case "www.marshallharber.com":
+  $server= 'LIVE';
+  $dbUserStr='root';
+  $dbPasswordStr='!ChBi2K1ngS';
+  $dbNameStr='jobshout_live_marshallharber';
+  $dbHostStr='127.0.0.1';
+  break;
+default:
+  $server= 'LIVE';
+  $dbUserStr='marshalluser';
+  $dbPasswordStr='!ChBi2K1ngS';
+  $dbNameStr='jobshout_live_marshallharber';
+  $dbHostStr='mysql.jobshout.co.uk';
+  break;
+}
+
+define("DB_USER",$dbUserStr);
+define("DB_PASSWORD",$dbPasswordStr);
+define("DB_NAME",$dbNameStr);
+define("DB_HOST",$dbHostStr);
+
+$site_path= "http://".$_SERVER['HTTP_HOST'];
+define("SITE_PATH",$site_path);
+define("SITE_WS_PATH",$site_path);
+define("SERVER",$server);
+
+//define("MAIL_HOST","smtp.sendgrid.net");
+//define("MAIL_USERNAME","tenthmatrix");
+//define("MAIL_PASSWORD",'$M6P8peUO[0HEn9%"');
+
+define("MAIL_HOST","email-smtp.us-west-2.amazonaws.com");
+#define("MAIL_USERNAME","AKIAIA4S7XHG3ISFFF2A");
+#define("MAIL_PASSWORD",'AoG7HzuRd1IEsCdZDL4sVHJL5nQGIMJ60iOjQS68Kg7z');
+
+
+define("MAIL_USERNAME","AKIAITQ66RMMI5EWIBOQ");
+define("MAIL_PASSWORD",'7ehKVqJXTevSROMlCnVQsvHJVNob8CvrUo307hEu');
+
+?>
