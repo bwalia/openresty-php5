@@ -8,6 +8,7 @@ services:
     volumes:
       - ./code:/code
       - ./edgeone.conf:/usr/local/openresty/nginx/conf/edgeone.conf
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf      
     links:
       - php
   php:
