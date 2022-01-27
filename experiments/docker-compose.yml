@@ -1,13 +1,16 @@
-web:
+version: '3'
+services:
+
+  web:
     image: bwalia/openresty-alpine
     ports:
-        - "8084:80"
+      - "8084:80"
     volumes:
-        - ./code:/code
-        - ./edgeone.conf:/usr/local/openresty/nginx/conf/edgeone.conf
+      - ./code:/code
+      - ./edgeone.conf:/usr/local/openresty/nginx/conf/edgeone.conf
     links:
-        - php
-php:
+      - php
+  php:
     image: php:5-fpm
     volumes:
-        - ./code:/code
+      - ./code:/code
