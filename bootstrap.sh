@@ -5,13 +5,16 @@ set -e
 # Treat undefined variables as errors.
 set -u
 
-function main {
-
 # Create dir for pid file.
 mkdir -p /var/php/
 chown www-data:root /var/php/
 chmod +x /var/php/
 chmod 755 -R /var/php/
+
+mkdir -p /etc/php/5.6/
+chown www-data:root /etc/php/5.6/
+chmod +x /etc/php/5.6/
+chmod 755 -R /etc/php/5.6/
 
 # Create dir for php unix sockets.
 mkdir -p /var/run/php-fpm/
@@ -39,8 +42,3 @@ chmod -R 755 /var/www/html
 # systemctl status php-fpm-5.service
 # instead of 'x' we used 'foobar'
 # but 'x' seems like a good practice 
-/bin/bash /inject-env-php.sh
-
-}
-
-main "$@"

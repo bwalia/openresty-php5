@@ -226,7 +226,11 @@ ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/
 #Prepare dir for PHP unix socket etc
 COPY bootstrap.sh /
 RUN chmod +x /bootstrap.sh
-#RUN /bin/bash /bootstrap.sh runs in supervisord instead
+RUN /bin/bash /bootstrap.sh
+
+COPY inject-env-php.sh /
+RUN chmod +x /inject-env-php.sh
+# RUN /bin/bash /inject-env-php.sh
 
 # Copy nginx configuration files
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
