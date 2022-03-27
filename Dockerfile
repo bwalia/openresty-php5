@@ -223,11 +223,10 @@ RUN apk add --no-cache --virtual .build-deps \
 # Add additional binaries into PATH for convenience
 ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
 
-
 #Prepare dir for PHP unix socket etc
-COPY setup.sh /
-RUN chmod +x /setup.sh
-RUN /bin/bash /setup.sh
+COPY bootstrap.sh /
+RUN chmod +x /bootstrap.sh
+#RUN /bin/bash /bootstrap.sh runs in supervisord instead
 
 # Copy nginx configuration files
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
@@ -239,11 +238,6 @@ RUN mkdir -p /opt/nginx/conf/nginx-tenants.d/ \
 
 #CMD ["/usr/local/sbin/php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf"]
 #CMD [ "php-fpm" ]
-
-#CMD ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
-COPY start.sh /
-RUN chmod +x /start.sh
-CMD sh /start.sh
 
 #CMD ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
 
