@@ -29,10 +29,44 @@ chown www-data:root /var/nginx/
 chmod +x /var/nginx/
 chmod 755 -R /var/nginx/
 
+mkdir -p /var/www/html
+chown -R www-data:www-data /var/www/html 
+chmod -R 755 /var/www/html 
+
 # systemctl daemon-reload
 # systemctl enable php-fpm-5.service
 # systemctl start php-fpm-5.service
 # systemctl status php-fpm-5.service
+# instead of 'x' we used 'foobar'
+# but 'x' seems like a good practice 
+
+if [ -z ${MYSQL_DB_HOST+foobar} ];
+then
+    echo "MYSQL_DB_HOST_ENV_VAR_IS_EMPTY"
+else
+echo "env[MYSQL_DB_HOST] = $MYSQL_DB_HOST;" >>  /usr/local/etc/php-fpm.conf
+fi
+
+if [ -z ${MYSQL_DB_USER+foobar} ];
+then
+    echo "MYSQL_DB_USER_ENV_VAR_IS_EMPTY"
+else
+echo "env[MYSQL_DB_USER] = $MYSQL_DB_USER;" >>  /usr/local/etc/php-fpm.conf
+fi
+
+if [ -z ${MYSQL_DB_PASSWORD+foobar} ];
+then
+    echo "MYSQL_DB_PASSWORD_ENV_VAR_IS_EMPTY"
+else
+echo "env[MYSQL_DB_PASSWORD] = $MYSQL_DB_PASSWORD;" >>  /usr/local/etc/php-fpm.conf
+fi
+
+if [ -z ${MYSQL_DB_NAME+foobar} ];
+then
+    echo "MYSQL_DB_NAME_ENV_VAR_IS_EMPTY"
+else
+echo "env[MYSQL_DB_NAME] = $MYSQL_DB_NAME;" >>  /usr/local/etc/php-fpm.conf
+fi
 
 }
 

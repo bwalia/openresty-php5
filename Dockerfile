@@ -74,11 +74,6 @@ COPY php-fpm-5.conf /usr/local/etc/php-fpm.conf
 
 # COPY php-fpm-5.service /etc/systemd/system/php-fpm-5.service
 
-#Prepare dir for PHP unix socket etc
-COPY setup.sh /
-RUN chmod +x /setup.sh
-RUN sh /setup.sh
-
 # Openresty
 
 # Docker Build Arguments
@@ -228,6 +223,11 @@ RUN apk add --no-cache --virtual .build-deps \
 # Add additional binaries into PATH for convenience
 ENV PATH=$PATH:/usr/local/openresty/luajit/bin:/usr/local/openresty/nginx/sbin:/usr/local/openresty/bin
 
+
+#Prepare dir for PHP unix socket etc
+COPY setup.sh /
+RUN chmod +x /setup.sh
+RUN /bin/bash /setup.sh
 
 # Copy nginx configuration files
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
