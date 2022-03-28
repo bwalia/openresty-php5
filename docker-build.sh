@@ -27,4 +27,4 @@ docker build -t ${REGISTRY}/openresty-php5 .
 docker push ${REGISTRY}/openresty-php5
 
 #docker run -p 9000:9000 -it php5
-docker run -p 8085:80 ${REGISTRY}/openresty-php5
+docker run -p 8089:80 ${REGISTRY}/openresty-php5
