@@ -230,7 +230,7 @@ RUN /bin/bash /bootstrap.sh
 
 COPY inject-env-php.sh /
 RUN chmod +x /inject-env-php.sh
-# RUN /bin/bash /inject-env-php.sh
+# RUN /bin/bash /inject-env-php.sh this is running inside the docker container at runtime
 
 # Copy nginx configuration files
 COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
